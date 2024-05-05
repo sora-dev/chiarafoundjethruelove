@@ -5601,6 +5601,9 @@ textarea.form-control {
   .footer-logo {
     margin: 15px 0;
   }
+  .nav-mobile a {
+    color: #99a98c !important;
+  }
 }
 @media (max-width: 576px) {
   .padding-divider-top {
