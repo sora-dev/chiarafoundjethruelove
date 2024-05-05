@@ -607,20 +607,20 @@ var Neela;
     //   });
     // },
 
-    handleSuccess: function (response) {
-      // Handle success response
-      $(".form_status_message").html(
-        '<div class="alert alert-success" role="alert">Your message has been sent successfully.</div>'
-      );
-    },
+    // handleSuccess: function (response) {
+    //   // Handle success response
+    //   $(".form_status_message").html(
+    //     '<div class="alert alert-success" role="alert">Your message has been sent successfully.</div>'
+    //   );
+    // },
 
-    handleError: function (xhr, status, error) {
-      // Handle error response
-      $(".form_status_message").html(
-        '<div class="alert alert-danger" role="alert">An error occurred while processing your request. Please try again later.</div>'
-      );
-      console.error(xhr.responseText);
-    },
+    // handleError: function (xhr, status, error) {
+    //   // Handle error response
+    //   $(".form_status_message").html(
+    //     '<div class="alert alert-danger" role="alert">An error occurred while processing your request. Please try again later.</div>'
+    //   );
+    //   console.error(xhr.responseText);
+    // },
 
     showError: function (t = "") {
       "" === t && (t = this.contactFormErrorMsg),
