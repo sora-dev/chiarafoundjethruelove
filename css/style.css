@@ -5415,6 +5415,15 @@ textarea.form-control {
   .widget-newsletter.light {
     padding: 0;
   }
+  .btn-show-mobile {
+    display: block;
+  }
+  #homepage .navbar {
+    display: none;
+  }
+  #homepage .nav-container {
+    justify-content: center !important;
+  }
 }
 @media (max-width: 767px) {
   .hero-wrapper,
@@ -5610,6 +5619,7 @@ textarea.form-control {
   }
   .btn-show-mobile {
     display: block;
+    width: 300px !important;
   }
   #homepage .navbar {
     display: none;
