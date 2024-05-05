@@ -17,15 +17,15 @@ app.post("/send-email", (req, res) => {
     // Configuration for your email service (e.g., Gmail)
     service: "gmail",
     auth: {
-      user: "your-email@gmail.com", // Your email address
-      pass: "your-password", // Your email password or app-specific password
+      user: "sd.jethro@gmail.com", // Your email address
+      pass: "09194453558qS", // Your email password or app-specific password
     },
   });
 
   // Email content
   const mailOptions = {
-    from: "your-email@gmail.com",
-    to: "recipient@example.com", // Email address where you want to receive submissions
+    from: "sd.jethro@gmail.com",
+    to: "jethro.sora@gnail.com", // Email address where you want to receive submissions
     subject: "New Form Submission",
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
