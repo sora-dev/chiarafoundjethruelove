@@ -3747,7 +3747,7 @@ section.side-flowers {
 #video-container {
   width: 100%;
   overflow: hidden;
-  height: 100vh;
+  height: 520px;
 }
 #background-video {
   width: 100vw;
@@ -5458,12 +5458,6 @@ textarea.form-control {
   .sn-icons i {
     font-size: 22pt;
   }
-  .g-recaptcha {
-    max-width: 100%;
-  }
-  .g-recaptcha div {
-    width: 250px !important;
-  }
   .hero-subtitle {
     font-size: 13pt;
   }
@@ -5712,6 +5706,13 @@ textarea.form-control {
   #bride-groom {
     padding: 0;
   }
+  .g-recaptcha {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .g-recaptcha div {
+    width: 250px !important;
+  }
 }
 @media (max-width: 480px) {
   .hero-wrapper::before {
@@ -5827,8 +5828,18 @@ textarea.form-control {
   }
   #footer-onepage .footer-info.right {
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     text-align: center;
+  }
+  .neela-quote {
+    font-size: 15pt !important;
+  }
+  .g-recaptcha {
+    width: 250px;
+    margin: 0 auto;
+  }
+  .g-recaptcha div {
+    width: 250px !important;
   }
 }
 @media (max-width: 375px) {
