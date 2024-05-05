@@ -5102,12 +5102,6 @@ textarea.form-control {
   display: none;
   margin: 50px auto 0;
 }
-#homepage .navbar {
-  display: none;
-}
-#homepage .nav-container {
-  justify-content: center !important;
-}
 @media (max-width: 1399px) {
   .invite .invite_info h2 {
     font-size: 30pt;
@@ -5616,6 +5610,12 @@ textarea.form-control {
   }
   .btn-show-mobile {
     display: block;
+  }
+  #homepage .navbar {
+    display: none;
+  }
+  #homepage .nav-container {
+    justify-content: center !important;
   }
 }
 @media (max-width: 576px) {
