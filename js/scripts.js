@@ -55,7 +55,7 @@ var Neela;
           /loaded|complete/.test(document.readyState) &&
             (clearInterval(e), a.resizeVideos());
         }, 10)),
-        a.contactForm(),
+        // a.contactForm(),
         a.objEvents(),
         a.parallaxTimeline(),
         (t = setInterval(function () {
