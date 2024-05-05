@@ -5098,6 +5098,16 @@ textarea.form-control {
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+.btn-show-mobile {
+  display: none;
+  margin: 50px auto 0;
+}
+#homepage .navbar {
+  display: none;
+}
+#homepage .nav-container {
+  justify-content: center !important;
+}
 @media (max-width: 1399px) {
   .invite .invite_info h2 {
     font-size: 30pt;
@@ -5603,6 +5613,9 @@ textarea.form-control {
   }
   .nav-mobile a {
     color: #99a98c !important;
+  }
+  .btn-show-mobile {
+    display: block;
   }
 }
 @media (max-width: 576px) {
