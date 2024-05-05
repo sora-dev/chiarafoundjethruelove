@@ -3,42 +3,46 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 
 const app = express();
+const port = process.env.PORT || 3000;
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.post("/api/send-email", async (req, res) => {
-  const { name, attendWedding, message } = req.body;
+// Define endpoint to handle form submissions
+app.post("/send-email", (req, res) => {
+  const { name, email, message } = req.body;
 
-  // Create a transporter using Gmail SMTP
+  // Create a Nodemailer transporter
   const transporter = nodemailer.createTransport({
+    // Configuration for your email service (e.g., Gmail)
     service: "gmail",
     auth: {
-      user: "sd.jethro@gmail.com",
-      pass: "09194453558q",
+      user: "your-email@gmail.com", // Your email address
+      pass: "your-password", // Your email password or app-specific password
     },
   });
 
-  // Email message options
+  // Email content
   const mailOptions = {
-    from: "sdjethro@gmail.com",
-    to: "jethro.sora@gmail.com",
-    subject: "New RSVP Form Submission",
-    html: `<p><strong>Name:</strong> ${name}</p>
-               <p><strong>Attendance:</strong> ${attendWedding}</p>
-               <p><strong>Message:</strong> ${message}</p>`,
+    from: "your-email@gmail.com",
+    to: "recipient@example.com", // Email address where you want to receive submissions
+    subject: "New Form Submission",
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
 
-  try {
-    // Send email
-    await transporter.sendMail(mailOptions);
-    res.status(200).send("Email sent successfully");
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).send("An error occurred while sending the email");
-  }
+  // Send email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      res.status(500).send("Error sending email");
+    } else {
+      console.log("Email sent:", info.response);
+      res.status(200).send("Email sent successfully");
+    }
+  });
 });
 
 // Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
