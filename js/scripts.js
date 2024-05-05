@@ -576,36 +576,36 @@ var Neela;
           })
           .resize();
     },
-    contactForm: function () {
-      var t = this;
-      $(".submit_form").on("click", function (event) {
-        event.preventDefault();
-        var formData = {};
-        var form = $(this).closest("form");
+    // contactForm: function () {
+    //   var t = this;
+    //   $(".submit_form").on("click", function (event) {
+    //     event.preventDefault();
+    //     var formData = {};
+    //     var form = $(this).closest("form");
 
-        // Serialize form data
-        form.find("input, textarea, select").each(function () {
-          var input = $(this);
-          formData[input.attr("name")] = input.val().trim();
-        });
+    //     // Serialize form data
+    //     form.find("input, textarea, select").each(function () {
+    //       var input = $(this);
+    //       formData[input.attr("name")] = input.val().trim();
+    //     });
 
-        // Submit the form data
-        $.ajax({
-          type: "POST",
-          url: "contact.php",
-          data: formData,
-          success: function (response) {
-            // Handle success response
-            t.handleSuccess(response);
-            form[0].reset(); // Reset the form
-          },
-          error: function (xhr, status, error) {
-            // Handle error response
-            t.handleError(xhr, status, error);
-          },
-        });
-      });
-    },
+    //     // Submit the form data
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "contact.php",
+    //       data: formData,
+    //       success: function (response) {
+    //         // Handle success response
+    //         t.handleSuccess(response);
+    //         form[0].reset(); // Reset the form
+    //       },
+    //       error: function (xhr, status, error) {
+    //         // Handle error response
+    //         t.handleError(xhr, status, error);
+    //       },
+    //     });
+    //   });
+    // },
 
     handleSuccess: function (response) {
       // Handle success response
