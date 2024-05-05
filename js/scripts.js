@@ -578,158 +578,50 @@ var Neela;
     },
     contactForm: function () {
       var t = this;
-      e(".submit_form").on("click", function (a) {
-        var n,
-          i,
-          o,
-          s = e(this),
-          r = s.closest("form"),
-          l = e("input, textarea, select, fieldset", r),
-          c = 0,
-          d = /\S+@\S+\.\S+/,
-          m = "contact",
-          h = !1;
-        return (
-          a.preventDefault(),
-          (o = function (e) {
-            return encodeURIComponent(e);
-          }),
-          s.width("auto"),
-          e(".form_status_message").html(""),
-          l.each(function () {
-            var t = e(this);
-            "hidden" === t.attr("type")
-              ? t.hasClass("subject")
-                ? (m += "&subject=" + o(t.val()))
-                : t.hasClass("fromName") || t.hasClass("fromname")
-                ? (m += "&fromname=" + o(t.val()))
-                : t.hasClass("fromEmail") || t.hasClass("fromemail")
-                ? (m += "&fromemail=" + o(t.val()))
-                : (t.hasClass("emailTo") || t.hasClass("emailto")) &&
-                  (m += "&emailto=" + o(t.val()))
-              : ("checkbox" === t.attr("type") &&
-                  1 === t.parents("fieldset").length &&
-                  t.parents("fieldset").hasClass("required")) ||
-                (t.is("fieldset") &&
-                t.hasClass("required") &&
-                0 === e("#" + t.attr("id") + " input:checkbox:checked").length
-                  ? (e("input", t).addClass("is-invalid"), (h = !0))
-                  : (t.hasClass("required") &&
-                      "checkbox" === t.attr("type") &&
-                      !e("input[id='" + t.attr("id") + "']").is(":checked")) ||
-                    (t.hasClass("required") &&
-                      "" === t.val() &&
-                      "checkbox" !== t.attr("type") &&
-                      !t.is("fieldset")) ||
-                    (t.hasClass("required") &&
-                      "radio" === t.attr("type") &&
-                      !e("input[name='" + t.attr("name") + "']").is(
-                        ":checked"
-                      )) ||
-                    ("email" === t.attr("type") &&
-                      "" !== t.val() &&
-                      !1 === d.test(t.val()))
-                  ? (t.addClass("is-invalid"), (h = !0))
-                  : "g-recaptcha-response" !== t.attr("id") &&
-                    "recaptcha-token" !== t.attr("id") &&
-                    (t.removeClass("is-invalid"),
-                    e("input", t).removeClass("is-invalid"),
-                    t.hasClass("subject")
-                      ? ((m += "&subject=" + o(t.val())),
-                        (m += "&subject_label=" + o(t.attr("name"))))
-                      : t.hasClass("fromName") || t.hasClass("fromname")
-                      ? ((m += "&fromname=" + o(t.val())),
-                        (m += "&fromname_label=" + o(t.attr("name"))))
-                      : t.hasClass("fromEmail") || t.hasClass("fromemail")
-                      ? ((m += "&fromemail=" + o(t.val())),
-                        (m += "&fromemail_label=" + o(t.attr("name"))))
-                      : ("radio" === t.attr("type")
-                          ? e("input[id='" + t.attr("id") + "']").is(
-                              ":checked"
-                            ) &&
-                            ((m +=
-                              "&field" + c + "_label=" + o(t.attr("name"))),
-                            (m +=
-                              "&field" +
-                              c +
-                              "_value=" +
-                              o(
-                                e.trim(
-                                  e("label[for='" + t.attr("id") + "']").text()
-                                )
-                              )))
-                          : t.is("fieldset")
-                          ? ((m +=
-                              "&field" + c + "_label=" + o(t.attr("name"))),
-                            e(
-                              "#" + t.attr("id") + " input:checkbox:checked"
-                            ).each(function (t) {
-                              0 === t
-                                ? ((m += "&field" + c + "_value="),
-                                  (m += o(
-                                    e.trim(
-                                      e(
-                                        "label[for='" +
-                                          e(this).attr("id") +
-                                          "']"
-                                      ).text()
-                                    )
-                                  )))
-                                : (m +=
-                                    ", " +
-                                    o(
-                                      e.trim(
-                                        e(
-                                          "label[for='" +
-                                            e(this).attr("id") +
-                                            "']"
-                                        ).text()
-                                      )
-                                    ));
-                            }))
-                          : ((m +=
-                              "&field" + c + "_label=" + o(t.attr("name"))),
-                            (m += "&field" + c + "_value=" + o(t.val()))),
-                        (c += 1))));
-          }),
-          (m += "&len=" + c),
-          e(".g-recaptcha").length &&
-            (m += "&recaptcha=" + grecaptcha.getResponse()),
-          (n = function () {
-            e(".form_status_message").html(
-              '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
-                t.contactFormSuccessMsg +
-                '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-            );
-          }),
-          (i = function () {
-            e(".fa-spinner", s).remove(), s.removeClass("disabled");
-          }),
-          h || t.sendingMail
-            ? t.showError()
-            : ((t.sendingMail = !0),
-              s.append('<i class="fas fa-spinner fa-spin after"></i>'),
-              s.addClass("disabled"),
-              e.ajax({
-                type: "POST",
-                url: "contact.php",
-                data: m,
-                success: function (a) {
-                  i(),
-                    "ok" === a
-                      ? (n(), r[0].reset())
-                      : t.showError(t.contactFormRecaptchaErrorMsg),
-                    (t.sendingMail = !1),
-                    e(".g-recaptcha").length && grecaptcha.reset();
-                },
-                error: function () {
-                  i(), t.showError(), (t.sendingMail = !1);
-                },
-              })),
-          !1
-        );
+      $(".submit_form").on("click", function (event) {
+        event.preventDefault();
+        var formData = {};
+        var form = $(this).closest("form");
+
+        // Serialize form data
+        form.find("input, textarea, select").each(function () {
+          var input = $(this);
+          formData[input.attr("name")] = input.val().trim();
+        });
+
+        // Submit the form data
+        $.ajax({
+          type: "POST",
+          url: "contact.php",
+          data: formData,
+          success: function (response) {
+            // Handle success response
+            t.handleSuccess(response);
+            form[0].reset(); // Reset the form
+          },
+          error: function (xhr, status, error) {
+            // Handle error response
+            t.handleError(xhr, status, error);
+          },
+        });
       });
     },
+
+    handleSuccess: function (response) {
+      // Handle success response
+      $(".form_status_message").html(
+        '<div class="alert alert-success" role="alert">Your message has been sent successfully.</div>'
+      );
+    },
+
+    handleError: function (xhr, status, error) {
+      // Handle error response
+      $(".form_status_message").html(
+        '<div class="alert alert-danger" role="alert">An error occurred while processing your request. Please try again later.</div>'
+      );
+      console.error(xhr.responseText);
+    },
+
     showError: function (t = "") {
       "" === t && (t = this.contactFormErrorMsg),
         e(".form_status_message").html(
