@@ -82,9 +82,10 @@
                             <!-- BEGIN MAIN MENU -->
                             <nav class="navbar">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="https://chiarafoundjethruelove.vercel.app/index.html">Home</a></li>
 
-                                    <li><a href="wedding-details.html">Wedding Details</a></li>
+                                    <li><a href="https://chiarafoundjethruelove.vercel.app/wedding-details.html">Wedding
+                                            Details</a></li>
 
                                     <li><a class="active" href="#">RSVP</a></li>
                                 </ul>
