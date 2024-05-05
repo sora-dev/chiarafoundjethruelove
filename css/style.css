@@ -5445,7 +5445,24 @@ textarea.form-control {
   .hero-title small,
   .neela-quote,
   .timeline .template-1 .date .neela-style {
-    font-size: 18pt;
+    font-size: 18pt !important;
+  }
+  .invite .invite_info h2 small,
+  .rsvp-page .rsvp-info p,
+  h5 {
+    font-size: 13pt;
+  }
+  .contact-info li {
+    font-size: 12pt;
+  }
+  .sn-icons i {
+    font-size: 22pt;
+  }
+  .g-recaptcha {
+    max-width: 100%;
+  }
+  .g-recaptcha div {
+    width: 250px !important;
   }
   .hero-subtitle {
     font-size: 13pt;
