@@ -137,11 +137,12 @@
                             <div class="col-xl-6 col-lg-7">
                                 <div class="form-wrapper no-shadow overflow neela-style">
                                     <h2 class="section-title">Will you Attend?</h2>
-                                    <p>
-                                        <i><b>Kindly submit one registration per person.</b></i>
+                                    <p style="font-size: 16pt;">
+                                        <i>
+                                            <b>Kindly submit one (1) registration per person.</b>
+                                        </i>
                                     </p>
-                                    <form id="form-rsvp" method="post"
-                                        action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
+                                    <form id="form-rsvp" method="post" action="contact.php"
                                         onsubmit="return submitForm(this);">
                                         <div class="form-floating">
                                             <input type="text" name="Name" id="name" placeholder="Your Name (Required)"
@@ -166,7 +167,8 @@
                                         </div>
 
                                         <div class="form-floating">
-                                            <textarea id="message" name="Message" placeholder="Message"
+                                            <textarea id="message" name="Message"
+                                                placeholder="Message <br><i>Please indicate all the </i>"
                                                 class="form-control" rows="4"></textarea>
                                             <label for="message">Message</label>
                                         </div>
@@ -285,10 +287,6 @@
     <!-- Template Scripts -->
     <script src="js/variables.js"></script>
     <script src="js/scripts.js"></script>
-
-    <!-- email handler -->
-    <script src="js/formHandler.js"></script>
-    <script src="js/emailSender.js"></script>
 
     <!-- Google reCaptcha API -->
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
