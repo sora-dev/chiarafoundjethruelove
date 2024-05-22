@@ -46,6 +46,8 @@
     <!-- Template CSS -->
     <link href="css/style.css" rel="stylesheet" />
 
+    <link href="css/pop-up.css" rel="stylesheet" />
+
     <!-- Modernizr JS -->
     <script src="js/modernizr-3.6.0.min.js"></script>
 </head>
@@ -82,9 +84,9 @@
                             <!-- BEGIN MAIN MENU -->
                             <nav class="navbar">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="https://chiarafoundjethruelove.vercel.app/index.html">Home</a></li>
+                                    <li><a href="index.html">Home</a></li>
 
-                                    <li><a href="https://chiarafoundjethruelove.vercel.app/wedding-details.html">Wedding
+                                    <li><a href="wedding-details.html">Wedding
                                             Details</a></li>
 
                                     <li><a class="active" href="#">RSVP</a></li>
@@ -138,12 +140,9 @@
                                 <div class="form-wrapper no-shadow overflow neela-style">
                                     <h2 class="section-title">Will you Attend?</h2>
                                     <p style="font-size: 16pt;">
-                                        <i>
-                                            <b>Kindly submit one (1) registration per person.</b>
-                                        </i>
+                                        <i><b>Kindly submit one (1) registration per person.</b></i>
                                     </p>
-                                    <form id="form-rsvp" method="post" action="contact.php"
-                                        onsubmit="return submitForm(this);">
+                                    <form id="form-rsvp" method="post" action="#" onsubmit="return submitForm(event);">
                                         <div class="form-floating">
                                             <input type="text" name="Name" id="name" placeholder="Your Name (Required)"
                                                 class="form-control required fromName" />
@@ -176,14 +175,13 @@
                                         <div class="form_status_message"></div>
 
                                         <div class="center">
-                                            <button type="submit" class="btn btn-primary submit_form">
-                                                Send
-                                            </button>
+                                            <button type="submit" class="btn btn-primary submit_form">Send</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <!-- END CONTACT FORM -->
+
                             <div class="contact-bottom">
                                 <div class="quote">
                                     <blockquote class="neela-quote small extra-margin">
@@ -270,8 +268,20 @@
             </div>
         </footer>
         <!-- END FOOTER -->
+                                                <!-- Popup HTML -->
+                                                <div id="popup" class="popup">
+                                                    <div class="popup-content">
+                                                        <span class="close">&times;</span>
+                                                        <div class="popup-body">
+                                                            <img src="images/jc-logo.png" alt="Wedding Celebration" class="popup-image" />
+                                                            <p>We sincerely apologize, but our RSVP list is already closed.</p>
+                                                            <p>However, we would be delighted if you could join us for our Community Wedding Celebration on June 9, 2024, at our residence in Gibraltar, Baguio City (near Gibraltar Elementary School and Covered Court). We would love to celebrate this joyous occasion with you. Come and join us!</p>
+                                                    </div>
+                                                </div>
     </div>
     <!-- END WRAPPER -->
+
+
 
     <!-- Libs -->
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -287,6 +297,7 @@
     <!-- Template Scripts -->
     <script src="js/variables.js"></script>
     <script src="js/scripts.js"></script>
+    <script src="js/popup.js"></script>
 
     <!-- Google reCaptcha API -->
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
